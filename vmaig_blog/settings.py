@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p1p2e^77+6ex*1@-s6hzcx7l3bx#g2q0w1za1c-x-1p@n6z^x*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['123.207.251.42', 'blog.json666.cn']
 
 
 # Application definition
@@ -92,7 +92,7 @@ DATABASES = {
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
-LANGUAGE_CODE = 'zh-cn'
+LANGUAGE_CODE = 'zh-hans'
 
 TIME_ZONE = 'Asia/Shanghai'
 
@@ -102,11 +102,25 @@ USE_L10N = True
 
 USE_TZ = True
 
+DATETIME_FORMAT = 'Y-m-d H:i:s'
+
+DATE_FORMAT = 'Y-m-d'
+TIME_FORMAT = 'H:i:s'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.8/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
 
 # 设置user model
 AUTH_USER_MODEL = "vmaig_auth.VmaigUser"
