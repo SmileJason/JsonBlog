@@ -32,7 +32,7 @@ class Comment(models.Model):
     class Meta:
         verbose_name_plural = verbose_name = u'评论'
         ordering = ['-create_time']
-        app_label = string_with_title('vmaig_comments', u"评论管理")
+        # app_label = string_with_title('vmaig_comments', u"评论管理")
 
     def __unicode__(self):
         return self.article.title + '_' + str(self.pk)

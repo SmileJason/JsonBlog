@@ -6,3 +6,5 @@ tx_*.jpg
 */migrations/*
 *.swp
 *.un~
+/assets
+/media

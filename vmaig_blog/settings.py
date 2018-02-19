@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'p1p2e^77+6ex*1@-s6hzcx7l3bx#g2q0w1za1c-x-1p@n6z^x*'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['123.207.251.42', 'blog.json666.cn']
 
@@ -149,10 +149,6 @@ LOGGING = {
             },
 
         'handlers': {
-            'null': {
-                'level': 'DEBUG',
-                'class': 'django.utils.log.NullHandler',
-                },
             'console': {
                 'level': 'INFO',
                 'class': 'logging.StreamHandler',
@@ -172,11 +168,6 @@ LOGGING = {
                 }
             },
         'loggers': {
-            '': {
-                'handlers': ['file', 'console'],
-                'level': 'INFO',
-                'propagate': True,
-                },
             'django': {
                 'handlers': ['file', 'console'],
                 'level': 'DEBUG',
