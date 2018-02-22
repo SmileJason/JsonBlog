@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 from django.conf import settings
+from DjangoUeditor.models import UEditorField
 
 
 class string_with_title(str):
@@ -92,7 +93,8 @@ class Article(models.Model):
     tags = models.CharField(max_length=200, null=True, blank=True,
                             verbose_name=u'标签', help_text=u'用逗号分隔')
     summary = models.TextField(verbose_name=u'摘要')
-    content = models.TextField(verbose_name=u'正文')
+    # content = models.TextField(verbose_name=u'正文')
+    content = UEditorField(verbose_name=u'正文', width=600, height=300, toolbars="full", imagePath="course/ueditor/", filePath="course/ueditor/", upload_settings={"imageMaxSize":1204000},default='')
     view_times = models.IntegerField(default=0)
     zan_times = models.IntegerField(default=0)
 

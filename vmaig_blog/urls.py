@@ -4,6 +4,8 @@ from django.contrib.sitemaps import GenericSitemap, Sitemap
 from django.core.urlresolvers import reverse
 
 from django.contrib import admin
+import xadmin
+from django.conf import settings
 
 from blog.models import Article, News, Category, Column
 
@@ -64,10 +66,20 @@ sitemaps = {
 
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
+    # url(r'^admin/', include(admin.site.urls)),
+    url(r'^xadmin/', xadmin.site.urls),
+    url(r'^ueditor/', include('DjangoUeditor.urls' )),
     url(r'', include('blog.urls')),
     url(r'', include('vmaig_comments.urls')),
     url(r'', include('vmaig_auth.urls')),
     url(r'^sitemap\.xml$', sitemap, {'sitemaps': sitemaps},
         name='django.contrib.sitemaps.views.sitemap')
 ]
+
+if settings.DEBUG:
+    urlpatterns += [
+        url(r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT,
+        }),
+    ]
+
